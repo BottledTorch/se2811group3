@@ -9,6 +9,34 @@ public class Controller {
 
     @FXML
     public void run() throws InterruptedException {
+        // 4 Services
+        FactoringService factoringService7 = new FactoringService(Math.pow(2,26), 1, Math.pow(2,26)/4 );
+
+        Runnable task7 = () -> Platform.runLater(factoringService7::start);
+        Thread thread7 = new Thread(task7);
+        thread7.setDaemon(true);
+        thread7.start();
+
+        FactoringService factoringService4 = new FactoringService(Math.pow(2,26), Math.pow(2,26)/4 + 1, Math.pow(2,26)/2 );
+
+        Runnable task4 = () -> Platform.runLater(factoringService4::start);
+        Thread thread4 = new Thread(task4);
+        thread4.setDaemon(true);
+        thread4.start();
+
+        FactoringService factoringService5 = new FactoringService(Math.pow(2,26)/2,3*Math.pow(2,26)/4 );
+
+        Runnable task5 = () -> Platform.runLater(factoringService5::start);
+        Thread thread5 = new Thread(task5);
+        thread5.setDaemon(true);
+        thread5.start();
+
+        FactoringService factoringService6 = new FactoringService(Math.pow(2,26), 3*Math.pow(2,26)/4, Math.pow(2,26));
+
+        Runnable task6 = () -> Platform.runLater(factoringService6::start);
+        Thread thread6 = new Thread(task6);
+        thread6.setDaemon(true);
+        thread6.start();
 
         // 2 Services
         FactoringService factoringService = new FactoringService(Math.pow(2,26),Math.pow(2,26)/2 );
