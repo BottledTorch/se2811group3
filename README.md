@@ -16,3 +16,14 @@ GUI will use Services to show progression with progress bars for each task.
 * Mitchell Mahnke
 * Alex Moran
 * Benjamin Pasten
+
+### Presentation Outline:
+1. Title Slide
+2. Design Pattern Description
+3. Our Project Description
+4. Our Project Results
+
+### Remaining Work Assignments:
+* Mitchell Mahnke - Use services to display progress of threads with JavaFX.
+* Alex Moran - Finish the Power Point Presentation, assist with implementation of pool and concurrent threads running in the pool.
+* Benjamin Pasten - Work on storing the results of the factored numbers in a thread safe way, so that they may be used again.
