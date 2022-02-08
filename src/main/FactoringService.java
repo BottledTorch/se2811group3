@@ -9,25 +9,25 @@ import java.util.Objects;
 
 public class FactoringService extends Service {
 
-    private final double numToFactor;
-    private double start;
-    private double end;
+    private final long numToFactor;
+    private long start;
+    private long end;
 
     private Collection results;
 
-    public FactoringService(double numToFactor) {
+    public FactoringService(long numToFactor) {
         this.numToFactor = numToFactor;
         this.start = -1;
         this.end = -1;
     }
 
-    public FactoringService(double numToFactor, double start) {
+    public FactoringService(long numToFactor, long start) {
         this.numToFactor = numToFactor;
         this.start = start;
         this.end = -1;
     }
 
-    public FactoringService(double numToFactor, double start, double end) {
+    public FactoringService(long numToFactor, long start, long end) {
         this.numToFactor = numToFactor;
         this.start = start;
         this.end = end;
@@ -40,8 +40,8 @@ public class FactoringService extends Service {
 
             @Override
             protected Object call() {
-                double startTime = System.nanoTime();
-                double elapsedTime = 0;
+                long startTime = System.nanoTime();
+                long elapsedTime = 0;
                 if (start != -1) {
                     if (end != -1) {
                         results = Factorer.factor(numToFactor, start, end);

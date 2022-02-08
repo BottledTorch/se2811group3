@@ -5,11 +5,11 @@ import java.util.Collection;
 
 public class Factorer {
 
-    public static Collection<Double> factor(double numToFactor) {
+    public static Collection<Long> factor(long numToFactor) {
         return factor(numToFactor, 1);
     }
 
-    public static Collection<Double> factor(double numToFactor, double start) {
+    public static Collection<Long> factor(long numToFactor, long start) {
         return factor(numToFactor, start, numToFactor);
     }
 
@@ -20,10 +20,10 @@ public class Factorer {
      * @param end  - the number to end with (inclusive)
      * @return Collection containing all of the factors
      */
-    public static Collection<Double> factor(double numToFactor, double start, double end) {
-        ArrayList<Double> factors = new ArrayList<>();
+    public static Collection<Long> factor(long numToFactor, long start, long end) {
+        ArrayList<Long> factors = new ArrayList<>();
 
-        for(double i = start; i <= numToFactor && i <= end; i++) {
+        for(long i = start; i <= numToFactor && i <= end; i++) {
             if (numToFactor % i == 0) {
                 factors.add(i);
             }
