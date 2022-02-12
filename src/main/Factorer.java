@@ -24,6 +24,9 @@ public class Factorer {
         ArrayList<Long> factors = new ArrayList<>();
 
         for(long i = start; i <= numToFactor && i <= end; i++) {
+            if (i == 0) {
+                i++;
+            }
             if (numToFactor % i == 0) {
                 factors.add(i);
             }
@@ -33,8 +36,7 @@ public class Factorer {
 
     public static void main(String[] args) {
         Factorer factorer = new Factorer();
-        System.out.println(factorer.factor(1028));
-        System.out.print(factorer.factor(1028, 1, 64) + " : ");
-        System.out.println(factorer.factor(1028, 65));
+        System.out.println(factorer.factor(10000, 0, 5000));
+
     }
 }
