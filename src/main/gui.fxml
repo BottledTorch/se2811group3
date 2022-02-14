@@ -5,10 +5,16 @@
 
 <!-- If you are getting a warning on launch, ensure that the version of java used matches what is being run ex. switch 11.0.1 to 8.0.202-ea -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
    <children>
-      <Button layoutX="274.0" layoutY="188.0" mnemonicParsing="false" onAction="#run" text="Run a Service" />
-      <ProgressBar fx:id="progressBar" layoutX="218.0" layoutY="274.0" prefWidth="200.0" progress="0.0" />
-      <ProgressBar fx:id="progressBar2" layoutX="218.0" layoutY="317.0" prefWidth="200.0" progress="0.0" />
+      <Button layoutX="73.0" layoutY="50.0" mnemonicParsing="false" onAction="#runTwo" text="2 Threads" />
+      <ProgressBar fx:id="progressBar" layoutX="19.0" layoutY="91.0" prefWidth="200.0" progress="0.0" />
+      <ProgressBar fx:id="progressBar2" layoutX="19.0" layoutY="121.0" prefWidth="200.0" progress="0.0" />
+      <Button layoutX="442.0" layoutY="50.0" mnemonicParsing="false" onAction="#runFour" text="4 Threads" />
+      <ProgressBar fx:id="progressBar3" layoutX="368.0" layoutY="91.0" prefWidth="200.0" progress="0.0" />
+      <ProgressBar fx:id="progressBar4" layoutX="368.0" layoutY="121.0" prefWidth="200.0" progress="0.0" />
+      <ProgressBar fx:id="progressBar5" layoutX="368.0" layoutY="152.0" prefWidth="200.0" progress="0.0" />
+      <ProgressBar fx:id="progressBar6" layoutX="368.0" layoutY="182.0" prefWidth="200.0" progress="0.0" />
+      <Button layoutX="274.0" layoutY="38.0" mnemonicParsing="false" onAction="#runBoth" text="Run Both" />
    </children>
 </AnchorPane>

@@ -2,11 +2,9 @@ package main;
 
 import javafx.application.Platform;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -44,14 +42,11 @@ public class ThreadPool {
                 bars.get(i).progressProperty().bind(factoringServices.get(i).progressProperty());
 
                 int finalI = i;
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Runnable task = () -> Platform.runLater(factoringServices.get(finalI)::start);
-                        Thread thread = new Thread(task);
-                        thread.setDaemon(true);
-                        thread.start();
-                    }
+                Platform.runLater(() -> {
+                    Runnable task = () -> Platform.runLater(factoringServices.get(finalI)::start);
+                    Thread thread = new Thread(task);
+                    thread.setDaemon(true);
+                    thread.start();
                 });
 
             }

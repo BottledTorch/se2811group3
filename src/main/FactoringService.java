@@ -1,14 +1,14 @@
 package main;
 
-import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class FactoringService extends Service {
+
+    static ConcurrentHashMap<Long, ArrayList<Long>> prevRuns = new ConcurrentHashMap<>(1000);
 
     private long numToFactor;
     private long start;
@@ -63,15 +63,20 @@ public class FactoringService extends Service {
                     if (numToFactor % i == 0) {
                         factors.add(i);
                     }
-                    updateProgress(i, numToFactor);
+                    updateProgress(i, end);
 
                 }
 
                 //
                 elapsedTime = (System.nanoTime() - startTime) / 1000000;
                 System.out.println(elapsedTime + "ms");
-                System.out.println(factors);
                 updateProgress(1,1);
+                if (prevRuns.contains(numToFactor)) {
+                    ArrayList<Long> temp = prevRuns.get(prevRuns);
+                    temp.addAll(factors);
+                } else {
+                    prevRuns.put(numToFactor, factors);
+                }
                 return factors;
             }
 
