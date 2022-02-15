@@ -101,8 +101,6 @@ public class Controller {
 
 
     public void showResults() {
-
-
         int numToFactor = Integer.parseInt(textBox.getText());
 
         for(Long a : results.get(numToFactor)) {

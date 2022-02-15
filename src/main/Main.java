@@ -11,8 +11,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
-        primaryStage.setTitle("Group 04 TEST");
-        primaryStage.setScene(new Scene(root, 850, 650));
+        primaryStage.setTitle("Group 04 Thread Pool Pattern");
+        primaryStage.setScene(new Scene(root, 600, 350));
         primaryStage.show();
     }
 
