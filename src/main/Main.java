@@ -1,3 +1,11 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Final Presentation
+ * Author:     Mitchell Mahnke, Alex Moran
+ * Date:       2/10/22
+ */
+
 package main;
 
 import javafx.application.Application;

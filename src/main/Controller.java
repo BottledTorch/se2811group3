@@ -1,19 +1,26 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Final Presentation
+ * Author:     Mitchell Mahnke, Alex Moran
+ * Date:       2/10/22
+ */
+
 package main;
 
 import javafx.fxml.FXML;
-
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Controller for the JavaFX application
+ */
 public class Controller {
 
     @FXML
     TextField textBox;
-    TextArea textArea;
 
     @FXML
     ProgressBar progressBar;
@@ -28,9 +35,12 @@ public class Controller {
     @FXML
     ProgressBar progressBar6;
 
-    private ConcurrentHashMap<Long, ArrayList<Long>> results;
-    private ThreadPool latestThreadPool;
 
+    /**
+     * Factor the provided number
+     * using a ThreadPool with only
+     * 2 threads
+     */
     @FXML
     public void runTwo() {
 
@@ -44,10 +54,13 @@ public class Controller {
 
         threadPool.take(factoringTask);
         threadPool.start();
-
-        latestThreadPool = threadPool;
     }
 
+    /**
+     * Factor the provided number
+     * using a ThreadPool with only
+     * 4 threads
+     */
     @FXML
     public void runFour() {
         ArrayList<ProgressBar> bars = new ArrayList<>(4);
@@ -63,48 +76,19 @@ public class Controller {
         threadPool.take(factoringTask);
         threadPool.start();
 
-        latestThreadPool = threadPool;
     }
 
+    /**
+     * Factor the provided number
+     * using a ThreadPool with both
+     * 2 and 4 threads
+     */
     @FXML
     public void runBoth() {
-        ArrayList<ProgressBar> bars = new ArrayList<>(2);
-        bars.add(progressBar);
-        bars.add(progressBar2);
-
-        ThreadPool threadPool = new ThreadPool(2, bars);
-        int numToFactor = Integer.parseInt(textBox.getText());
-
-        Task factoringTask = new Task(numToFactor);
-
-        threadPool.take(factoringTask);
-
-        //-------------------------------------------------------
-
-        ArrayList<ProgressBar> bars2 = new ArrayList<>(4);
-        bars2.add(progressBar3);
-        bars2.add(progressBar4);
-        bars2.add(progressBar5);
-        bars2.add(progressBar6);
-
-        ThreadPool threadPool2 = new ThreadPool(4, bars2);
-        Task factoringTask2 = new Task(numToFactor);
-
-        threadPool2.take(factoringTask2);
-
-        //--------------------------------------------------------
-
-        threadPool.start();
-        threadPool2.start();
-        latestThreadPool = threadPool2;
+        runTwo();
+        runFour();
     }
 
 
-    public void showResults() {
-        int numToFactor = Integer.parseInt(textBox.getText());
 
-        for(Long a : results.get(numToFactor)) {
-            System.out.println(a);
-        }
-    }
 }

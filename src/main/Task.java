@@ -1,14 +1,39 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Final Presentation
+ * Author:     Mitchell Mahnke, Alex Moran
+ * Date:       2/10/22
+ */
+
+
 package main;
 
+/**
+ * This is a simple task, which can
+ * properly divide itself for parallelization
+ */
 public class Task {
 
     private long numToBeFactored;
 
+    /**
+     * Default constructor, storing the
+     * number to be factored
+     * @param numToBeFactored - long
+     */
     public Task(long numToBeFactored) {
         this.numToBeFactored = numToBeFactored;
     }
 
-    // start with thread num 0
+    /**
+     * Based on the threadNum and total thread count,
+     * this method will divide itself into a proper
+     * chunk for parallelism.
+     * @param threadNumber - current thread num
+     * @param numberThreads - total threads
+     * @return - params for FactoringService
+     */
     public long[] getParams(int threadNumber, int numberThreads) {
 
         float threadNum = threadNumber;
