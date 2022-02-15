@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ThreadPool {
 
     private ArrayList<FactoringService> factoringServices;
-    private ConcurrentHashMap<Long, ArrayList<Integer>> runs;
+    private ConcurrentHashMap<Long, ArrayList<Long>> runs;
     private Queue<Task> queue = new ArrayDeque<>(1);
     private boolean isRunning = false;
     private ArrayList<ProgressBar> bars;
@@ -38,7 +38,8 @@ public class ThreadPool {
 
             for (int i = 0; i < numThreads; i++) {
                 long[] params = currentTask.getParams(i, numThreads);
-                factoringServices.get(i).load(params[0], params[1], params[2]);
+                // Pass in previous run of this number
+                factoringServices.get(i).load(params[0], params[1], params[2], runs.get(params[0]));
                 bars.get(i).progressProperty().bind(factoringServices.get(i).progressProperty());
 
                 int finalI = i;

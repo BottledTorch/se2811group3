@@ -32,6 +32,15 @@ public class FactoringService extends Service {
         this.end = end;
     }
 
+    public void load(long numToFactor, long start, long end, ArrayList<Long> prev) {
+        this.numToFactor = numToFactor;
+        this.start = start;
+        this.end = end;
+        if(prev!=null){
+            prevRuns.put(numToFactor, prev);
+        }
+    }
+
     @Override
     protected Task createTask() {
 
@@ -53,35 +62,35 @@ public class FactoringService extends Service {
                 }
                 //
                 ArrayList<Long> factors = new ArrayList<>();
-                System.out.println(start);
-                System.out.println(numToFactor);
-                System.out.println(end);
-                for(long i = start; i <= numToFactor && i <= end; i++) {
-                    if (i == 0) {
-                        i++;
-                    }
-                    if (numToFactor % i == 0) {
-                        factors.add(i);
-                    }
-                    updateProgress(i, end);
+                System.out.println("start: "+start);
+                System.out.println("Number to factor: "+numToFactor);
+                System.out.println("end: "+end);
+                updateProgress(0, 1);
+                boolean previouslyRan = prevRuns.containsKey(numToFactor);
+                if(previouslyRan) {
+                    System.out.println("number found in previous runs: " + previouslyRan);
+                    factors = prevRuns.get(numToFactor);
+                } else { // Factor number
+                    // Hard coded factoring?
+                    for (long i = start; i <= numToFactor && i <= end; i++) {
+                        if (i == 0) {
+                            i++;
+                        }
+                        if (numToFactor % i == 0) {
+                            factors.add(i);
+                        }
+                        updateProgress(i, end);
 
-                }
-
-                //
-                elapsedTime = (System.nanoTime() - startTime) / 1000000;
-                System.out.println(elapsedTime + "ms");
-                updateProgress(1,1);
-                if (prevRuns.contains(numToFactor)) {
-                    ArrayList<Long> temp = prevRuns.get(prevRuns);
-                    temp.addAll(factors);
-                } else {
+                    }
                     prevRuns.put(numToFactor, factors);
                 }
+
+                elapsedTime = (System.nanoTime() - startTime) / 1000000;
+                System.out.println(elapsedTime + "ms");
+                updateProgress(1, 1);
                 return factors;
             }
-
         };
-
         return task;
     }
 
