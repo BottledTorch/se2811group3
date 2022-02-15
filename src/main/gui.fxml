@@ -5,7 +5,7 @@
 
 <!-- If you are getting a warning on launch, ensure that the version of java used matches what is being run ex. switch 11.0.1 to 8.0.202-ea -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
    <children>
       <Button layoutX="73.0" layoutY="50.0" mnemonicParsing="false" onAction="#runTwo" text="2 Threads" />
       <ProgressBar fx:id="progressBar" layoutX="19.0" layoutY="91.0" prefWidth="200.0" progress="0.0" />

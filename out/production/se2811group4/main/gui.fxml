@@ -5,7 +5,7 @@
 
 <!-- If you are getting a warning on launch, ensure that the version of java used matches what is being run ex. switch 11.0.1 to 8.0.202-ea -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
    <children>
       <Button layoutX="73.0" layoutY="50.0" mnemonicParsing="false" onAction="#runTwo" text="2 Threads" />
       <ProgressBar fx:id="progressBar" layoutX="19.0" layoutY="91.0" prefWidth="200.0" progress="0.0" />
@@ -17,7 +17,5 @@
       <ProgressBar fx:id="progressBar6" layoutX="368.0" layoutY="182.0" prefWidth="200.0" progress="0.0" />
       <Button layoutX="274.0" layoutY="38.0" mnemonicParsing="false" onAction="#runBoth" text="Run Both" />
       <TextField fx:id="textBox" layoutX="226.0" layoutY="2.0" promptText="Number to Factor" />
-      <TextArea fx:id="textArea" layoutX="26.0" layoutY="161.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="236.0" layoutY="170.0" mnemonicParsing="false" onAction="#showResults" text="Show Results" />
    </children>
 </AnchorPane>
