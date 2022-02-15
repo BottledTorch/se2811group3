@@ -6,12 +6,13 @@ import javafx.scene.control.ProgressBar;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ThreadPool {
 
     private ArrayList<FactoringService> factoringServices;
-    private ConcurrentHashMap<Long, ArrayList<Long>> runs;
+    private ConcurrentHashMap<Long, Set<Long>> runs;
     private Queue<Task> queue = new ArrayDeque<>(1);
     private boolean isRunning = false;
     private ArrayList<ProgressBar> bars;
@@ -55,7 +56,7 @@ public class ThreadPool {
         isRunning = false;
     }
 
-    public ConcurrentHashMap<Long, ArrayList<Long>> getRuns() {
+    public ConcurrentHashMap<Long, Set<Long>> getRuns() {
         return runs;
     }
 }

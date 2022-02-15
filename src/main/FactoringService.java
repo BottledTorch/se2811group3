@@ -4,11 +4,13 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class FactoringService extends Service {
 
-    static ConcurrentHashMap<Long, ArrayList<Long>> prevRuns = new ConcurrentHashMap<>(1000);
+    static ConcurrentHashMap<Long, Set<Long>> prevRuns = new ConcurrentHashMap<>(1000);
 
     private long numToFactor;
     private long start;
@@ -32,7 +34,7 @@ public class FactoringService extends Service {
         this.end = end;
     }
 
-    public void load(long numToFactor, long start, long end, ArrayList<Long> prev) {
+    public void load(long numToFactor, long start, long end, Set<Long> prev) {
         this.numToFactor = numToFactor;
         this.start = start;
         this.end = end;
@@ -43,7 +45,6 @@ public class FactoringService extends Service {
 
     @Override
     protected Task createTask() {
-
         Task task = new Task() {
 
             @Override
@@ -60,8 +61,8 @@ public class FactoringService extends Service {
                     start = 1;
                     end = numToFactor;
                 }
-                //
-                ArrayList<Long> factors = new ArrayList<>();
+                Set<Long> factors = new HashSet<Long>();
+
                 System.out.println("start: "+start);
                 System.out.println("Number to factor: "+numToFactor);
                 System.out.println("end: "+end);
@@ -71,7 +72,6 @@ public class FactoringService extends Service {
                     System.out.println("number found in previous runs: " + previouslyRan);
                     factors = prevRuns.get(numToFactor);
                 } else { // Factor number
-                    // Hard coded factoring?
                     for (long i = start; i <= numToFactor && i <= end; i++) {
                         if (i == 0) {
                             i++;
@@ -82,13 +82,18 @@ public class FactoringService extends Service {
                         updateProgress(i, end);
 
                     }
-                    prevRuns.put(numToFactor, factors);
+                    //Store the results into the previous runs
+                    Set<Long> results = prevRuns.putIfAbsent(numToFactor, factors);
+                    if(results!=null){
+                        results.addAll(factors);
+                        prevRuns.put(numToFactor,results);
+                    }
                 }
-
                 elapsedTime = (System.nanoTime() - startTime) / 1000000;
                 System.out.println(elapsedTime + "ms");
                 updateProgress(1, 1);
-                return factors;
+                System.out.println(prevRuns.get(numToFactor).toString());
+                return prevRuns.get(numToFactor);
             }
         };
         return task;
