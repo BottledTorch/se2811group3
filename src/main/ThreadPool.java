@@ -55,6 +55,7 @@ public class ThreadPool {
         isRunning = false;
     }
 
-
-
+    public ConcurrentHashMap<Long, ArrayList<Long>> getRuns() {
+        return runs;
+    }
 }

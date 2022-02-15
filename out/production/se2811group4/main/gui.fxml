@@ -16,5 +16,8 @@
       <ProgressBar fx:id="progressBar5" layoutX="368.0" layoutY="152.0" prefWidth="200.0" progress="0.0" />
       <ProgressBar fx:id="progressBar6" layoutX="368.0" layoutY="182.0" prefWidth="200.0" progress="0.0" />
       <Button layoutX="274.0" layoutY="38.0" mnemonicParsing="false" onAction="#runBoth" text="Run Both" />
+      <TextField fx:id="textBox" layoutX="226.0" layoutY="2.0" promptText="Number to Factor" />
+      <TextArea fx:id="textArea" layoutX="26.0" layoutY="161.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="236.0" layoutY="170.0" mnemonicParsing="false" onAction="#showResults" text="Show Results" />
    </children>
 </AnchorPane>
